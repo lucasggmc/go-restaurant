@@ -32,7 +32,7 @@ export function Dashboard() {
     }
     
     getFoods();  
-  })
+  }, [])
 
 
   async function handleAddFood(food: any) {    
