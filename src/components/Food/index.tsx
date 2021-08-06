@@ -7,11 +7,11 @@ import { useState } from 'react';
 
 type FoodType = {
   id: number;
+  image: string;
   name: string,
   description: string,
   price: number;
-  available: boolean,
-  image: string;
+  available: boolean,  
 }
 
 interface FoodProps {
