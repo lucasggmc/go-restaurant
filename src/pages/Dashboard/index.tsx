@@ -10,7 +10,7 @@ import { FoodsContainer } from './styles';
 import { useState } from 'react';
 import { useEffect } from 'react';
 
-type Food = {
+type FoodType = {
   id: number;
   image: string;
   name: string;
@@ -20,8 +20,8 @@ type Food = {
 }
 
 export function Dashboard() {
-  const [foods, setFoods] = useState<Food[]>([]);
-  const [editingFood, setEditingFood] = useState<Food>({} as Food);
+  const [foods, setFoods] = useState<FoodType[]>([]);
+  const [editingFood, setEditingFood] = useState<FoodType>({} as FoodType);
   const [modalOpen, setModalOpen] = useState(false);
   const [editModalOpen, setEditModalOpen] = useState(false);
 
@@ -35,21 +35,20 @@ export function Dashboard() {
   }, [])
 
 
-  async function handleAddFood(food: any) {    
+  async function handleAddFood(food: FoodType) {    
     try {
       const response = await api.post('/foods', {
         ...food,
         available: true,
       });
-
-      // this.setState({ foods: [...foods, response.data] });
+      
       setFoods([...foods, response.data]);
     } catch (err) {
       console.log(err);
     }
   }
 
-  async function handleUpdateFood(food: Food) {    
+  async function handleUpdateFood(food: FoodType) {    
     try {
       const foodUpdated = await api.put(
         `/foods/${editingFood.id}`,
@@ -82,7 +81,7 @@ export function Dashboard() {
     setEditModalOpen(!editModalOpen);
   }
 
-  function handleEditFood(food:Food) {
+  function handleEditFood(food: FoodType) {
     setEditModalOpen(true);
     setEditingFood(food);    
   }

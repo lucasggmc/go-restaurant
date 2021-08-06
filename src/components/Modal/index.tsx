@@ -24,16 +24,7 @@ export function Modal({ isOpen, setIsOpen, children }: ModalProps) {
     if(previousIsOpenValue !== isOpen){
       setModalStatus(isOpen);
     }
-  }, [previousIsOpenValue, isOpen])
-
-  // componentDidUpdate(prevProps) {
-  //   const { isOpen } = this.props;
-
-  //   if (prevProps.isOpen !== isOpen) {
-  //     console.log(this.props)
-  //     this.setState({ modalStatus: isOpen })
-  //   }
-  // }      
+  }, [previousIsOpenValue, isOpen])   
 
     return (
       <ReactModal
